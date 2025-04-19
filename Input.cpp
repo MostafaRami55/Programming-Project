@@ -82,4 +82,3 @@ ActionType Input::GetUserAction() const
 Input::~Input()
 {
 }
-
