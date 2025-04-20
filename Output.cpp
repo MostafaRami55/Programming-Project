@@ -81,10 +81,27 @@ void Output::CreateDrawToolBar() const
 	//To control the order of these images in the menu, 
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
 	string MenuItemImages[DRAW_ITM_COUNT];
+	
 	MenuItemImages[ITM_RECT] = "images\\MenuItems\\Menu_Rect.jpg";
+	MenuItemImages[ITM_TRI] = "images\\MenuItems\\Menu_tri.jpg"   ;
+	MenuItemImages[ITM_HEX] = "images\\MenuItems\\Menu_Hex.jpg";
+    MenuItemImages[ITM_CIR] = "images\\MenuItems\\Menu_circle.jpg";
+	MenuItemImages[ITM_SQU] = "images\\MenuItems\\menu_Sqr.jpg";
+	MenuItemImages[ITM_SELECT] = "images\\MenuItems\\menu_select.jpg";
+	MenuItemImages[ITM_SWAP] = "images\\MenuItems\\menu_swap.jpg";
+	MenuItemImages[ITM_ROTATE] = "images\\MenuItems\\menu_rotate.jpg";
+	MenuItemImages[ITM_Delete] = "images\\MenuItems\\menu_delete.jpg";
+	MenuItemImages[ITM_clearAll] = "images\\MenuItems\\menu_clearall.jpg";
+	MenuItemImages[ITM_COPY] = "images\\MenuItems\\menu_copy.jpg";
+	MenuItemImages[ITM_CUT] = "images\\MenuItems\\menu_cut.jpg";
+	MenuItemImages[ITM_PASTE] = "images\\MenuItems\\menu_paste.jpg";
+	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\menu_save.jpg";
+	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\menu_load.jpg";
+    MenuItemImages[ITM_SWITCHPLAY] = "images\\MenuItems\\menu_play.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\Menu_Exit.jpg";
-	MenuItemImages[ITM_TRI] = "images\\MenuItems\\Menu_Rect.jpg";
+	
 
+	
 	//TODO: Prepare images for each menu item and add it to the list
 
 	//Draw menu item one image at a time
@@ -162,57 +179,10 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 	
 }
-void Output::Draw_Tringle3(Point P1, Point P2,Point P3, GfxInfo TrigGfxInfo, bool selected) const
-{
-	color DrawingClr;
-	if (selected)
-		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
-	else
-		DrawingClr = TrigGfxInfo.DrawClr;
 
-	pWind->SetPen(DrawingClr, 1);
-	drawstyle style;
-	if (TrigGfxInfo.isFilled)
-	{
-		style = FILLED;
-		pWind->SetBrush(TrigGfxInfo.FillClr);
-	}
-	else
-		style = FRAME;
-
-
-	pWind->DrawTriangle(P1.x, P1.y, P2.x,P2.y, P3.x, P3.y,FILLED);
-
-
-}
-void Output::Draw_Circle3(Point P1,Point P2, GfxInfo CircGfxInfo, bool selected) const
-{
-	
-	color DrawingClr;
-	if (selected)
-		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
-	else
-		DrawingClr = CircGfxInfo.DrawClr;
-
-	pWind->SetPen(DrawingClr, 1);
-	drawstyle style;
-	if (CircGfxInfo.isFilled)
-	{
-		style = FILLED;
-		pWind->SetBrush(CircGfxInfo.FillClr);
-	}
-	else
-		style = FRAME;
-	double Radius = sqrt(pow(P2.x - P1.x, 2) + pow(P2.y - P1.y, 2)) / 2;
-	pWind->DrawCircle(P1.x, P1.y,Radius, FILLED);
-
-
-}
 
 //////////////////////////////////////////////////////////////////////////////////////////
 Output::~Output()
 {
 	delete pWind;
 }
-
-
