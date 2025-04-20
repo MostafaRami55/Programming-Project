@@ -14,20 +14,22 @@ enum ActionType //The actions supported (you can add more if needed)
 	DRAWING_AREA,	//A click on the drawing area
 	STATUS,			//A click on the status bar
 	Draw_TRI,        //To Draw a Tringle
-	Draw_CIR        //To draw the circle
+	Draw_CIR,       //To draw the circle
+	Draw_SQU, // To draw the square
+	Draw_HEX,  //to draw the hexagon
+	SELECT,// Kid  clicks on a fiqure to select it
+	SWAP,
+	ROTATE,
+	Delete,
+	clearAll,
+	COPY,
+	CUT,
+	PASTE,
+	SAVE,
+	LOAD,
+	SWITCHPLAY,
 	///TODO: Add the other action types of the two modes
 };
 
 struct Point	//To be used for figures points
 { int x,y; };
-
-struct GfxInfo	//Graphical info of each figure (you may add more members)
-{
-	color DrawClr;	//Draw color of the figure
-	color FillClr;	//Fill color of the figure
-	bool isFilled;	//Figure Filled or not
-	int BorderWdth;	//Width of figure borders
-
-};
-
-#endif
