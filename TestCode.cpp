@@ -6,6 +6,7 @@
 int main()
 {
 	int x,y;
+	
 
 	//Create Input and Output objects to test
 	Output *pOut = new Output();
@@ -35,13 +36,17 @@ int main()
 	pOut->PrintMessage("TEST2: Now we will show that Output class can draw any figure in any state, Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
-	GfxInfo gfxInfo;//to be used with draw function of the class Ouput                                                               ///////////////////////////////////////                                      
-	                                                                                                                                //    To identfy all the paramters   //                                     
-	                                                                                                                               ///////////////////////////////////////                                      
-	Point P1, P2, P3;
-	int Radius;
+	GfxInfo gfxInfo;//to be used with draw function of the class Ouput                                             ///////////////////Entering functions here///////////////////
 	
 	
+	
+	Point P1, P2,P3;                                                    
+	string Length;
+	int Height;
+
+
+
+
 	/// 2.1- Rectangle Test ///
 	/// =================== 
 	pOut->PrintMessage("Drawing a Rectangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
@@ -98,7 +103,7 @@ int main()
 	pOut->ClearDrawArea();
 
 	/// 2.3- Triangle Test ///
-	/// =================== 
+ 	/// =================== 
 	pOut->PrintMessage("Drawing a Triangle, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
@@ -166,6 +171,14 @@ int main()
 		{
 		case DRAW_RECT:
 				pOut->PrintMessage("Action: Draw a Rectangle , Click anywhere");
+				pOut->PrintMessage("Drawing a Rectangle ==> non-filled,  Click two points");
+				pIn->GetPointClicked(P1.x, P1.y);
+				pIn->GetPointClicked(P2.x, P2.y);
+				gfxInfo.BorderWdth = 5;
+				gfxInfo.DrawClr = BLACK;	//any color for border
+				gfxInfo.isFilled = false;	//Figure is NOT filled
+				pOut->DrawRect(P1, P2, gfxInfo, false);
+
 				break;
 
 		case STATUS:
@@ -189,31 +202,45 @@ int main()
 				pOut->PrintMessage("Action: Switch to Play Mode, creating Design tool bar");
 				pOut->CreatePlayToolBar();
 				break;
+		case Draw_SQU:
+				pOut->PrintMessage("Action: Draw a Square , Click anywhere");
+				pOut->PrintMessage("Drawing a Square, Click one points");
+				pIn->GetPointClicked(P1.x, P1.y);
+				pIn->GetPointClicked(P2.x, P2.y);
+				gfxInfo.BorderWdth = 5;
+				gfxInfo.DrawClr = BLACK;	//any color for border
+				gfxInfo.isFilled = false;	//Figure is NOT filled
+
+				pOut->PrintMessage("Please enetr the length of the Squar");
+				Length = pIn->GetSrting(pOut);
+				Height = stoi(Length);
+
+				pOut->DrawSqu(P1, Height, gfxInfo, false);
+				break;
 		case Draw_TRI:
-				pOut->PrintMessage("Action: choose three points");
-				pIn->GetPointClicked(P1.x, P1.y);
-				pIn->GetPointClicked(P2.x, P2.y);
-				pIn->GetPointClicked(P3.x, P3.y);
+			pOut->PrintMessage("Action: Draw a Tringle , Click anywhere");
+			pOut->PrintMessage("Drawing a Tringle, Click Three points");
+			pIn->GetPointClicked(P1.x, P1.y);
+			pIn->GetPointClicked(P2.x, P2.y);
+			pIn->GetPointClicked(P3.x, P3.y);
+			gfxInfo.BorderWdth = 5;
+			gfxInfo.DrawClr = BLACK;	//any color for border
+			gfxInfo.isFilled = false;	//Figure is NOT filled
 
-				gfxInfo.BorderWdth = 6;
-				gfxInfo.DrawClr = BLUE;	//any color for border
-				gfxInfo.FillClr = GREEN;//any color for filling
-				gfxInfo.isFilled = true;//Figure is filled
-				
-				pOut->Draw_Tringle3(P1,P2,P3,gfxInfo,FILLED);
-				break;
+			pOut->DrawTri(P1, P2, P3, gfxInfo, false);
+			break;
 		case Draw_CIR:
-				pOut->PrintMessage("Action:Choose two points and radius");
-				pIn->GetPointClicked(P1.x, P1.y);
-				pIn->GetPointClicked(P2.x, P2.y);
+			pOut->PrintMessage("Action: Draw a Circle , Click anywhere");
+			pOut->PrintMessage("Drawing a Circle, Click Two points");
+			pIn->GetPointClicked(P1.x, P1.y);
+			pIn->GetPointClicked(P2.x, P2.y);
+			gfxInfo.BorderWdth = 5;
+			gfxInfo.DrawClr = BLACK;	//any color for border
+			gfxInfo.isFilled = false;	//Figure is NOT filled
 
-				gfxInfo.BorderWdth = 6;
-				gfxInfo.DrawClr = BLUE;	//any color for border
-				gfxInfo.FillClr = GREEN;//any color for filling
-				gfxInfo.isFilled = true;//Figure is filled
+			pOut->DrawCir(P1, P2, gfxInfo, false);
+			break;
 
-				pOut->Draw_Circle3(P1, P2, gfxInfo,FILLED);
-				break;
 
 		///TODO: Add more cases for the other action types
 
