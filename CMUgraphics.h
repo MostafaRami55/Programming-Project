@@ -266,7 +266,7 @@ class window {
 
     // Draws a circle centered at (iX, iY) with a radius of iRadius.  Valid drawstyles 
     // are FRAME, FILLED, and INVERTED.
-    void DrawCircle(const int iX, const int iY, const int iRadius, const drawstyle dsStyle = FILLED);                                                                                                        //All the Drwaings
+    void DrawCircle(const int iX, const int iY, const int iRadius, const drawstyle dsStyle = FILLED);
 
     // Draws an ellipse inside the rectangle bounded by (iX1, iY1) and (iX2, iY2)
     // Valid drawstyles are FRAME, FILLED, and INVERTED
