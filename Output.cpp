@@ -180,9 +180,86 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	
 }
 
+void Output::DrawSqu(Point P1, int Height, GfxInfo RectGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = RectGfxInfo.DrawClr;
 
+	pWind->SetPen(DrawingClr, 1);
+	drawstyle style;
+	if (RectGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(RectGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	Point P2;
+	Point P3;
+	Height = Height / 2;
+	P2.x = P1.x - Height;
+	P2.y = P1.y - Height;
+	P3.x = P1.x + Height;
+	P3.y = P1.y + Height;
+
+	pWind->DrawRectangle(P2.x, P2.y, P3.x, P3.y, style);
+
+}
+
+void Output::DrawTri(Point P1, Point P2,Point P3, GfxInfo RectGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = RectGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, 1);
+	drawstyle style;
+	if (RectGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(RectGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+
+	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
+
+}
+
+void Output::DrawCir(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = RectGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, 1);
+	drawstyle style;
+	if (RectGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(RectGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	double Radius;
+	Radius = (sqrt(pow(P2.x - P1.x, 2) + pow(P2.y - P1.y, 2))) ;
+
+	pWind->DrawCircle(P1.x, P1.y, Radius, style);
+
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 Output::~Output()
 {
 	delete pWind;
 }
+
