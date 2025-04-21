@@ -60,6 +60,7 @@ ActionType Input::GetUserAction() const
 			case ITM_HEX: return Draw_HEX;
 				
 			case ITM_TRI: return Draw_TRI;
+
 			case ITM_SELECT: return SELECT;
 			case ITM_SWAP: return SWAP;
 			case ITM_ROTATE: return ROTATE;
