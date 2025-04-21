@@ -18,10 +18,12 @@ public:
 	void ClearStatusBar() const;	//Clears the status bar
 	void ClearDrawArea() const;	//Clears the drawing area
 	
-	// -- Figures Drawing functions                                                                                  //Drawing functionssssssssssssssssssssssssss
-	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected=false) const;                               //Draw a rectangle
-	void Draw_Tringle3(Point P1, Point P2, Point P3, GfxInfo RectGfxInfo, bool selected = false) const;              //Draw Tringle
-	void Draw_Circle3(Point P1, Point P2, GfxInfo CircGfxInfo, bool selected) const;                                 //Draw circle
+	// -- Figures Drawing functions
+	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected=false) const;  //Draw a rectangle
+	void DrawSqu(Point P1, int Height, GfxInfo RectGfxInfo, bool selected = false) const;
+	void DrawTri(Point P1, Point P2,Point P3, GfxInfo RectGfxInfo, bool selected) const;
+	void DrawCir(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const;
+
 	///Make similar functions for drawing all other figure types.
 	
 	void PrintMessage(string msg) const;	//Print a message on Status bar
